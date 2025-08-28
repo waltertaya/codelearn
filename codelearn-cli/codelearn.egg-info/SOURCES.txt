@@ -1,0 +1,8 @@
+codelearn.py
+setup.py
+codelearn.egg-info/PKG-INFO
+codelearn.egg-info/SOURCES.txt
+codelearn.egg-info/dependency_links.txt
+codelearn.egg-info/entry_points.txt
+codelearn.egg-info/requires.txt
+codelearn.egg-info/top_level.txt
