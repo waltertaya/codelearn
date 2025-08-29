@@ -1,19 +1,27 @@
 package middlewares
 
 import (
+	"codelearn-backend/initialisers"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var jwtSecret = []byte("your-secret-key-change-in-production")
+var jwtSecret []byte
 
 type Claims struct {
 	UserID   int    `json:"user_id"`
 	Username string `json:"username"`
 	jwt.RegisteredClaims
+}
+
+func init() {
+	initialisers.LoadEnv()
+
+	jwtSecret = []byte(os.Getenv("JWT_SECRET_KEY"))
 }
 
 func AuthMiddleware() gin.HandlerFunc {

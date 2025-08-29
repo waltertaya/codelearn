@@ -1,18 +1,26 @@
 package utils
 
 import (
+	"codelearn-backend/initialisers"
 	"codelearn-backend/models"
+	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var jwtSecret = []byte("your-secret-key-change-in-production")
+var jwtSecret []byte
 
 type Claims struct {
 	UserID   int    `json:"user_id"`
 	Username string `json:"username"`
 	jwt.RegisteredClaims
+}
+
+func init() {
+	initialisers.LoadEnv()
+
+	jwtSecret = []byte(os.Getenv("JWT_SECRET_KEY"))
 }
 
 func GenerateTokens(user models.User) (string, string, error) {
