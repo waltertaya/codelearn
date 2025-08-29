@@ -57,7 +57,9 @@ cd codelearn-backend
 go mod tidy
 # go build -o codelearn-backend
 # ./codelearn-backend
-go run .
+# go run .
+go run migrate/migrate.go
+go run cmd/main.go
 ```
 
 ### CLI Usage
